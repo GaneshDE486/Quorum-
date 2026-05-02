@@ -1,0 +1,117 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Unified conversation record",
+  "description": "Single index row for one conversation folder: metadata from meeting-info and summary, plus relative paths to sibling JSON files.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "record",
+    "conversation_id",
+    "title",
+    "organizerEmail",
+    "allEmails",
+    "duration_min",
+    "startTime",
+    "endTime",
+    "summary",
+    "overallSentiment",
+    "sentimentScore",
+    "topics",
+    "meeting_summary_path",
+    "total_conversation_path",
+    "speakers_path",
+    "meeting_info_path",
+    "speaker_info_path",
+    "event_path"
+  ],
+  "properties": {
+    "record": {
+      "type": "integer",
+      "minimum": 1,
+      "description": "1-based index among all conversations in the dataset."
+    },
+    "conversation_id": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Folder name and meeting identifier; equals meeting-info.json meetingId."
+    },
+    "title": {
+      "type": "string",
+      "description": "From meeting-info.json title."
+    },
+    "organizerEmail": {
+      "type": "string",
+      "description": "From meeting-info.json organizerEmail."
+    },
+    "allEmails": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "From meeting-info.json allEmails."
+    },
+    "duration_min": {
+      "type": "number",
+      "description": "Meeting duration in minutes from meeting-info.json duration."
+    },
+    "startTime": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO-8601 instant from meeting-info.json startTime."
+    },
+    "endTime": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO-8601 instant from meeting-info.json endTime."
+    },
+    "summary": {
+      "type": "string",
+      "description": "From summary.json summary."
+    },
+    "overallSentiment": {
+      "type": "string",
+      "description": "From summary.json overallSentiment."
+    },
+    "sentimentScore": {
+      "type": "number",
+      "description": "From summary.json sentimentScore."
+    },
+    "topics": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "From summary.json topics."
+    },
+    "meeting_summary_path": {
+      "type": "string",
+      "pattern": "^[^/]+/summary\\.json$",
+      "description": "Relative path: {conversation_id}/summary.json"
+    },
+    "total_conversation_path": {
+      "type": "string",
+      "pattern": "^[^/]+/transcript\\.json$",
+      "description": "Relative path: {conversation_id}/transcript.json"
+    },
+    "speakers_path": {
+      "type": "string",
+      "pattern": "^[^/]+/speaker-meta\\.json$",
+      "description": "Relative path: {conversation_id}/speaker-meta.json"
+    },
+    "meeting_info_path": {
+      "type": "string",
+      "pattern": "^[^/]+/meeting-info\\.json$",
+      "description": "Relative path: {conversation_id}/meeting-info.json"
+    },
+    "speaker_info_path": {
+      "type": "string",
+      "pattern": "^[^/]+/speakers\\.json$",
+      "description": "Relative path: {conversation_id}/speakers.json"
+    },
+    "event_path": {
+      "type": "string",
+      "pattern": "^[^/]+/events\\.json$",
+      "description": "Relative path: {conversation_id}/events.json"
+    }
+  }
+}

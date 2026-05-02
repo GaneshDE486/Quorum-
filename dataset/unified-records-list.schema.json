@@ -1,0 +1,10 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Unified records document",
+  "description": "Array of unified conversation records produced from dataset/*/meeting-info.json and dataset/*/summary.json.",
+  "type": "array",
+  "items": {
+    "$ref": "./unified-record.schema.json"
+  },
+  "minItems": 1
+}
