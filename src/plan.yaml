@@ -1,0 +1,73 @@
+# taxonomy_config.yaml
+categories:
+  A:
+    name: "Technical Support & Troubleshooting"
+    primary_stakeholder: "support_leaders"
+    secondary_stakeholders: ["engineering_leads"]
+    description: "Reactive ticket-driven calls for break-fix, known issues, and integration problems"
+    
+  B:
+    name: "Platform Outage & Incident Response"
+    primary_stakeholder: "support_leaders"
+    secondary_stakeholders: ["engineering_leads", "sales_managers"]
+    description: "Internal and external calls directly caused by the March 10th Detect outage"
+    
+  C:
+    name: "Customer Outage Fallout & Churn Risk"
+    primary_stakeholder: "support_leaders"
+    secondary_stakeholders: ["sales_managers"]
+    description: "External calls where customers express anger, demand credits, or evaluate competitors due to outage"
+    
+  D:
+    name: "Contract Renewal & Commercial Negotiation"
+    primary_stakeholder: "sales_managers"
+    secondary_stakeholders: ["product_managers"]
+    description: "Calls about pricing, terms, renewals, and expansion deals"
+    
+  E:
+    name: "Comply v2 Launch & Go-to-Market"
+    primary_stakeholder: "sales_managers"
+    secondary_stakeholders: ["product_managers", "engineering_leads"]
+    description: "All calls related to the Comply v2 product launch lifecycle"
+    
+  F:
+    name: "Competitive Threat & Win/Loss Analysis"
+    primary_stakeholder: "sales_managers"
+    secondary_stakeholders: ["product_managers"]
+    description: "Calls explicitly discussing competitors and deal outcomes"
+    
+  G:
+    name: "Customer Product Feedback & Feature Requests"
+    primary_stakeholder: "product_managers"
+    secondary_stakeholders: ["engineering_leads"]
+    description: "Proactive feedback calls where customers share pain points and roadmap wishes"
+    
+  H:
+    name: "Engineering Planning & Execution"
+    primary_stakeholder: "engineering_leads"
+    secondary_stakeholders: ["product_managers"]
+    description: "Internal team syncs for sprints, roadmaps, and cross-team coordination"
+    
+  I:
+    name: "Compliance & Audit Preparation"
+    primary_stakeholder: "engineering_leads"
+    secondary_stakeholders: ["sales_managers", "product_managers"]
+    description: "Calls driven by external audit deadlines and certification requirements"
+
+# Stakeholder views define which categories appear in their dashboard
+stakeholder_views:
+  support_leaders:
+    primary_categories: [A, B, C]
+    dashboard_label: "Support Operations"
+    
+  sales_managers:
+    primary_categories: [D, E, F]
+    dashboard_label: "Revenue & Growth"
+    
+  product_managers:
+    primary_categories: [G, E, F]
+    dashboard_label: "Product Strategy"
+    
+  engineering_leads:
+    primary_categories: [H, B, I]
+    dashboard_label: "Engineering Execution"

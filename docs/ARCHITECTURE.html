@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Architecture — Transcript Intelligence</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400..800;1,600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --text: #f4f1ff;
+      --muted: #9d94b8;
+      --accent: #5eead4;
+      --accent-2: #f0abfc;
+      --border: rgba(167, 139, 250, 0.24);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: "Plus Jakarta Sans", system-ui, sans-serif;
+      background-color: #08070f;
+      background-image:
+        radial-gradient(ellipse 100% 80% at 0% -20%, rgba(139, 92, 246, 0.34), transparent 55%),
+        radial-gradient(ellipse 90% 55% at 100% 8%, rgba(20, 184, 166, 0.18), transparent 52%),
+        radial-gradient(ellipse 70% 45% at 85% 100%, rgba(251, 113, 133, 0.11), transparent 42%),
+        linear-gradient(180deg, #0a0912 0%, #14122a 38%, #0b0a12 100%);
+      color: var(--text);
+      line-height: 1.62;
+      min-height: 100vh;
+    }
+    .doc-top {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem;
+      width: 100%;
+      padding: 0.9rem clamp(1rem, 3vw, 2.5rem);
+      background: rgba(8, 7, 15, 0.9);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(94, 234, 212, 0.22);
+    }
+    .doc-top a {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 650;
+      font-size: 0.9rem;
+    }
+    .doc-top a:hover { color: var(--accent-2); text-decoration: underline; }
+    .doc-top span { font-size: 0.78rem; color: var(--muted); font-weight: 500; }
+    .doc-wrap {
+      width: 100%;
+      max-width: none;
+      margin: 0;
+      padding: clamp(1rem, 1.8vw, 1.75rem) clamp(1rem, 4vw, 3.5rem) clamp(2.5rem, 6vw, 5rem);
+    }
+    .doc-article {
+      width: 100%;
+      max-width: none;
+      background: transparent;
+      border: none;
+      border-radius: 0;
+      padding: 0;
+      box-shadow: none;
+    }
+    .doc-article h1 {
+      font-size: clamp(1.55rem, 3.2vw, 2.25rem);
+      margin: 0 0 1rem;
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+      background: linear-gradient(105deg, #fdf4ff 0%, #a5f3fc 42%, #c4b5fd 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .doc-article h2 {
+      font-size: clamp(1.05rem, 1.9vw, 1.35rem);
+      margin: 2.35rem 0 0.85rem;
+      padding: 0.5rem 0 0.6rem 1rem;
+      border-left: 4px solid #a78bfa;
+      border-bottom: 1px solid var(--border);
+      color: #ede9fe;
+    }
+    .doc-article h2:first-of-type { margin-top: 0; }
+    .doc-article h2:nth-of-type(4n+2) {
+      border-left-color: #2dd4bf;
+      color: #ccfbf1;
+    }
+    .doc-article h2:nth-of-type(4n+3) {
+      border-left-color: #fbbf24;
+      color: #fef9c3;
+    }
+    .doc-article h2:nth-of-type(4n+4) {
+      border-left-color: #fb7185;
+      color: #ffe4e6;
+    }
+    .doc-article h3 {
+      font-size: clamp(0.98rem, 1.4vw, 1.08rem);
+      margin: 1.45rem 0 0.55rem;
+      color: #7ee8d8;
+    }
+    .doc-article h4 {
+      font-size: 0.95rem;
+      margin: 1rem 0 0.4rem;
+      color: #c4b5fd;
+    }
+    .doc-article p {
+      margin: 0.65rem 0;
+      color: #dcd7ec;
+      font-size: clamp(0.88rem, 1.2vw, 0.98rem);
+    }
+    .doc-article a { color: #7dd3fc; font-weight: 500; }
+    .doc-article a:hover { color: #f0abfc; }
+    .doc-article hr {
+      border: none;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(167, 139, 250, 0.45), transparent);
+      margin: 2.25rem 0;
+    }
+    .doc-article ul, .doc-article ol {
+      margin: 0.6rem 0 0.6rem 1.25rem;
+      color: #dcd7ec;
+      font-size: clamp(0.88rem, 1.2vw, 0.98rem);
+    }
+    .doc-article li { margin: 0.35rem 0; }
+    .doc-article strong { color: #fff; }
+    .doc-article code {
+      font-size: 0.86em;
+      padding: 0.12rem 0.4rem;
+      border-radius: 6px;
+      background: rgba(30, 27, 55, 0.95);
+      border: 1px solid rgba(94, 234, 212, 0.22);
+      color: #a5f3fc;
+    }
+    .doc-article blockquote {
+      margin: 0.9rem 0;
+      padding: 0.65rem 1rem;
+      border-left: 4px solid #f0abfc;
+      background: rgba(139, 92, 246, 0.1);
+      color: #c4bcd9;
+      font-size: 0.92rem;
+      border-radius: 0 10px 10px 0;
+    }
+    .doc-article table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: clamp(0.8rem, 1.1vw, 0.9rem);
+      margin: 1.15rem 0;
+    }
+    .doc-article th, .doc-article td {
+      border: 1px solid var(--border);
+      padding: 0.55rem 0.65rem;
+      text-align: left;
+      vertical-align: top;
+    }
+    .doc-article thead th {
+      background: linear-gradient(180deg, rgba(139, 92, 246, 0.38) 0%, rgba(45, 212, 191, 0.16) 100%);
+      color: #faf5ff;
+      font-weight: 650;
+    }
+    .doc-article tbody tr:nth-child(even) td { background: rgba(255, 255, 255, 0.025); }
+    .doc-article td { color: #e8e4f6; }
+    .doc-article pre:not(.mermaid) {
+      overflow-x: auto;
+      padding: 1rem 1.15rem;
+      border-radius: 12px;
+      background: rgba(12, 10, 22, 0.92);
+      border: 1px solid rgba(167, 139, 250, 0.28);
+      font-size: 0.82rem;
+    }
+    .doc-article pre code { background: none; border: none; padding: 0; color: #d8d4e8; }
+    .mermaid {
+      margin: 1.5rem 0;
+      padding: 1.15rem 1.25rem;
+      border-radius: 14px;
+      background: rgba(18, 16, 35, 0.78);
+      border: 1px solid rgba(45, 212, 191, 0.24);
+      overflow-x: auto;
+    }
+    .kw-risk {
+      color: #fecaca;
+      font-weight: 700;
+      background: rgba(248, 113, 113, 0.2);
+      border: 1px solid rgba(248, 113, 113, 0.45);
+      padding: 0.06rem 0.28rem;
+      border-radius: 4px;
+      white-space: nowrap;
+    }
+    .kw-cadence {
+      color: #fef08a;
+      font-weight: 650;
+      background: rgba(250, 204, 21, 0.12);
+      border: 1px solid rgba(250, 204, 21, 0.38);
+      padding: 0.06rem 0.28rem;
+      border-radius: 4px;
+      white-space: nowrap;
+    }
+    .doc-footer {
+      font-size: 0.82rem;
+      color: var(--muted);
+      margin-top: 3rem;
+      padding-top: 1.25rem;
+      border-top: 1px dashed rgba(167, 139, 250, 0.35);
+    }
+  </style>
+</head>
+<body>
+  <header class="doc-top">
+    <a href="/">← Dashboard</a>
+    <span>Generated from docs/ARCHITECTURE.md</span>
+  </header>
+  <div class="doc-wrap">
+    <article class="doc-article">
+<h1>Transcript Intelligence — Architecture &amp; Classification</h1>
+<p>This document describes how meeting data is split into categories, when the LLM runs, which JSON fields drive each step, and how the pieces connect. It matches the current code under <code>src/</code>.</p>
+<p><strong>Styled HTML (dashboard link):</strong> run <code>python3 scripts/build_architecture_html.py</code> to regenerate <code>docs/ARCHITECTURE.html</code> after editing this file. The FastAPI route <code>/architecture</code> serves that HTML when present.</p>
+<hr />
+<h2>0. Hybrid on-demand (“lazy”) LLM approach</h2>
+<p>This project uses a <strong>hybrid</strong> strategy: <strong>cheap, wide batch labeling</strong> first, and <strong>expensive, deep LLM work</strong> only when a human asks for it — also called <strong>on-demand</strong> or <strong>lazy</strong> evaluation from a token-budget perspective.</p>
+<h3>Phase 1 — classify every conversation (no full transcript to the model)</h3>
+<ul>
+<li><strong>Inputs:</strong> <code>meeting-info.json</code> and <code>summary.json</code> per folder — notably <strong>title</strong>, <strong>summary text</strong>, <strong>topics</strong>, <strong>sentiment</strong> (<code>sentimentScore</code> / <code>overallSentiment</code>), and <strong>participant emails</strong> (internal vs external).</li>
+<li><strong>Mechanism:</strong> Deterministic <strong>rules</strong> assign most meetings to a single letter <strong>A–I</strong>. If no rule matches, a <strong>short</strong> LLM call (<code>llm_classify</code>) still receives only those structured fields — <strong>not</strong> the full transcript — to emit one letter.</li>
+<li><strong>Output:</strong> <code>dataset/classification_output/all_classified.csv</code> powers stakeholder dashboards for <strong>all</strong> meetings at once.</li>
+</ul>
+<h3>Phase 2 — summarise only when an owner wants more</h3>
+<ul>
+<li><strong>Trigger:</strong> A user opens a meeting in the UI and explicitly runs <strong>“Process transcript with LLM”</strong>.</li>
+<li><strong>Mechanism:</strong> <code>POST /api/conversation/{id}/llm-summarize</code> sends <strong>metadata plus the full plain transcript</strong> (capped for context) so the model can produce an analyst-style Markdown brief.</li>
+<li><strong>Why:</strong> Avoid <strong>blindly</strong> summarising every call in batch (high token cost, latency, and little value if nobody reads it). Deep LLM work follows <strong>business interest</strong>, not automatic fan-out.</li>
+</ul>
+<h3>Why “hybrid”</h3>
+<table>
+<thead>
+<tr>
+<th>Layer</th>
+<th>What runs</th>
+<th>Token posture</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Batch taxonomy</td>
+<td>Rules + optional <strong>tiny</strong> LLM (letter only)</td>
+<td>Minimise model input; no transcript</td>
+</tr>
+<tr>
+<td>On-demand insight</td>
+<td><strong>Full transcript</strong> summarisation</td>
+<td>Pay only when a stakeholder requests it</td>
+</tr>
+</tbody>
+</table>
+<h3>Per-conversation bundle (six JSON files)</h3>
+<p>When you walk <strong>every</strong> folder under <code>dataset/&lt;conversation_id&gt;/</code>, the same <strong>bundle shape</strong> appears: about <strong>six</strong> JSON artifacts per meeting. Together they split <strong>“what kind of meeting was this?”</strong> (cheap, repeatable) from <strong>“what exactly was said, line by line?”</strong> (rich, heavy).</p>
+<table>
+<thead>
+<tr>
+<th>File</th>
+<th>What it holds</th>
+<th>Role in batch classification (A–I)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong><code>meeting-info.json</code></strong></td>
+<td><code>meetingId</code>, <strong>title</strong>, <strong>startTime</strong> / endTime, duration, <strong><code>allEmails</code></strong>, invitees</td>
+<td>Rules lean on <strong>title</strong>, <strong>calendar day</strong> (for time-windowed incidents), and <strong>internal vs external</strong> roster (<code>@aegiscloud.com</code> boundary in code).</td>
+</tr>
+<tr>
+<td><strong><code>summary.json</code></strong></td>
+<td><strong>Narrative <code>summary</code></strong>, <strong><code>topics</code></strong> (tag list), <strong><code>overallSentiment</code></strong> / <strong><code>sentimentScore</code></strong>, optional <code>actionItems</code>, <code>keyMoments</code></td>
+<td><strong>Main text surface</strong> for keyword / sentiment rules — already a <strong>distilled</strong> read of the call, not raw transcript.</td>
+</tr>
+<tr>
+<td><strong><code>transcript.json</code></strong></td>
+<td>Time-coded utterances (full spoken text)</td>
+<td><strong>Not</strong> used for <code>classify_by_rules</code> or <code>llm_classify</code>; kept for UI drill-down and <strong>on-demand</strong> <code>POST …/llm-summarize</code>.</td>
+</tr>
+<tr>
+<td><strong><code>speaker-meta.json</code></strong></td>
+<td>Speaker ids / display metadata</td>
+<td>Supports dashboard flyout; <strong>not</strong> the primary signal for letter choice.</td>
+</tr>
+<tr>
+<td><strong><code>speakers.json</code></strong></td>
+<td>Additional speaker rollups where present</td>
+<td>Same — presentation and attribution, not the first-pass taxonomy layer.</td>
+</tr>
+<tr>
+<td><strong><code>events.json</code></strong></td>
+<td>Join/leave and related events if captured</td>
+<td>Same — operational detail for timelines, not required to decide A–I in batch.</td>
+</tr>
+</tbody>
+</table>
+<p>So batch logic intentionally concentrates on <strong>two</strong> files — <strong><code>meeting-info.json</code> + <code>summary.json</code></strong> — because they are <strong>small, comparable across all conversations, and semantically dense</strong> for “bucket this meeting.”</p>
+<h3>Patterns observed across files (why rules-first + hybrid LLM)</h3>
+<p>These patterns come from <strong>reading many conversations</strong> and comparing the same meeting across all six artifacts:</p>
+<ol>
+<li><strong><code>summary.json</code> reads like a well-processed product, not raw capture.</strong> It usually contains a single coherent paragraph, a <strong>curated topic list</strong> (e.g. “billing dispute”, “migration cleanup”), and <strong>sentiment</strong> that align with how a human would label the call. That makes <strong>deterministic rules</strong> over <code>summary</code> + <code>topics</code> + sentiment <strong>trustworthy for most meetings</strong> without sending the full transcript to a model.</li>
+<li><strong><code>meeting-info.json</code> is structurally stable.</strong> Title and email roster are <strong>short and consistent</strong> from file to file — good for high-precision guards (“Support Case #…”, “all internal emails”, “any external domain”).</li>
+<li><strong>The transcript duplicates the “class” story at high token cost.</strong> For answering <strong>which letter A–I</strong>, the transcript often <strong>repeats</strong> what the summary already captured; using it in batch for every call would <strong>burn tokens and latency</strong> for little extra accuracy on coarse taxonomy.</li>
+<li><strong>Speaker / event files cluster around UI depth.</strong> They matter for <strong>who said what</strong> and <strong>join order</strong> in the FastAPI drill-down; they rarely change the <strong>first-order</strong> question “renewal vs outage vs support vs GTM” that the rules encode.</li>
+</ol>
+<p><strong>Design conclusion:</strong> A <strong>hybrid</strong> approach matches that layout — <strong>rule-based (and optional tiny LLM) batch labelling</strong> over <strong><code>meeting-info</code> + <code>summary</code></strong>, because the data pattern shows those files already carry the <strong>important, fine-grained text</strong> for categorisation; <strong>full-transcript LLM</strong> stays <strong>on-demand</strong> for the minority of cases where a stakeholder wants <strong>analyst-grade</strong> detail beyond the summary, or where the summary alone is insufficient.</p>
+<hr />
+<h2>1. High-level architecture</h2>
+<div class="mermaid">
+flowchart TB
+  subgraph inputs[&quot;Per-conversation inputs (dataset)&quot;]
+    MI[&quot;meeting-info.json&quot;]
+    SU[&quot;summary.json&quot;]
+    TR[&quot;transcript.json&quot;]
+    SM[&quot;speaker-meta.json&quot;]
+    EV[&quot;events.json&quot;]
+  end
+
+  subgraph batch[&quot;Batch classification (offline)&quot;]
+    P[&quot;classify_transcripts_dashboard.py&quot;]
+    R[&quot;Rules engine classify_by_rules&quot;]
+    L1[&quot;LLM fallback llm_classify&quot;]
+    CSV[&quot;dataset/classification_output/all_classified.csv&quot;]
+    LOG[&quot;dataset/llm_output/llm_calls.jsonl&quot;]
+  end
+
+  subgraph serve[&quot;Dashboard (online)&quot;]
+    F[&quot;fastapi_dashboard.py&quot;]
+    API[&quot;GET /api/dashboard · GET /api/conversation/{id}&quot;]
+    UI[&quot;Embedded HTML dashboard&quot;]
+    L2[&quot;POST …/llm-summarize (optional)&quot;]
+  end
+
+  MI --&gt; P
+  SU --&gt; P
+  P --&gt; R
+  R --&gt;|&quot;letter A–I&quot;| CSV
+  R --&gt;|&quot;no match&quot;| L1
+  L1 --&gt; CSV
+  L1 --&gt; LOG
+
+  CSV --&gt; F
+  F --&gt; API
+  API --&gt; UI
+  MI --&gt; F
+  SU --&gt; F
+  TR --&gt; F
+  SM --&gt; F
+  EV --&gt; F
+  L2 --&gt; LOG
+</div>
+<p><strong>Roles</strong></p>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>classify_transcripts_dashboard.py</code></td>
+<td>Walks each conversation folder, assigns <strong>one letter A–I</strong>, writes CSV + optional HTML charts.</td>
+</tr>
+<tr>
+<td><code>fastapi_dashboard.py</code></td>
+<td>Serves the SPA, reads the CSV for boards, loads <strong>full bundles</strong> for drill-down and optional <strong>transcript-level</strong> LLM summary.</td>
+</tr>
+<tr>
+<td><code>llm_model_config.py</code></td>
+<td>Shared Groq OpenAI-compatible client (<code>ModelSingleton</code>).</td>
+</tr>
+<tr>
+<td><code>llm_call_logger.py</code></td>
+<td>Append-only JSONL log of LLM <strong>inputs and outputs</strong> (and errors).</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>2. How many categories, and what they mean</h2>
+<p>There are <strong>nine primary taxonomy letters: A through I</strong>. Each meeting gets <strong>exactly one</strong> letter for reporting. The canonical names and stakeholder mapping mirror <code>src/plan.yaml</code> and <code>CATEGORY_LABELS</code> / <code>PRIMARY_STAKEHOLDER_BY_CATEGORY</code> in code.</p>
+<table>
+<thead>
+<tr>
+<th>Letter</th>
+<th>Category name</th>
+<th>Primary stakeholder key</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>A</strong></td>
+<td>Technical Support &amp; Troubleshooting</td>
+<td><code>support_leaders</code></td>
+</tr>
+<tr>
+<td><strong>B</strong></td>
+<td>Platform Outage &amp; Incident Response</td>
+<td><code>support_leaders</code></td>
+</tr>
+<tr>
+<td><strong>C</strong></td>
+<td>Customer Outage Fallout &amp; Churn Risk</td>
+<td><code>support_leaders</code></td>
+</tr>
+<tr>
+<td><strong>D</strong></td>
+<td>Contract Renewal &amp; Commercial Negotiation</td>
+<td><code>sales_managers</code></td>
+</tr>
+<tr>
+<td><strong>E</strong></td>
+<td>Comply v2 Launch &amp; Go-to-Market</td>
+<td><code>sales_managers</code></td>
+</tr>
+<tr>
+<td><strong>F</strong></td>
+<td>Competitive Threat &amp; Win/Loss Analysis</td>
+<td><code>sales_managers</code></td>
+</tr>
+<tr>
+<td><strong>G</strong></td>
+<td>Customer Product Feedback &amp; Feature Requests</td>
+<td><code>product_managers</code></td>
+</tr>
+<tr>
+<td><strong>H</strong></td>
+<td>Engineering Planning &amp; Execution</td>
+<td><code>engineering_leads</code></td>
+</tr>
+<tr>
+<td><strong>I</strong></td>
+<td>Compliance &amp; Audit Preparation</td>
+<td><code>engineering_leads</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Stakeholder dashboards</strong> slice the same rows into four views (each view shows a <strong>subset</strong> of letters), e.g. Support Operations uses <strong>A, B, C</strong>; Revenue &amp; Growth uses <strong>D, E, F</strong>; etc.</p>
+<p><strong>Sub-themes (A1, A2, …, I3)</strong> are <strong>curated human-readable examples</strong> (27 lines total: three per letter). They appear in the UI as a <strong>reference strip</strong> only. The classifier assigns <strong>the letter</strong>, not an automatic A1/B2 sub-tag.</p>
+<hr />
+<h2>3. Classification mechanism: rules first, then LLM</h2>
+<div class="mermaid">
+flowchart LR
+  MI[&quot;meeting-info + summary.json&quot;]
+  MI --&gt; Q{&quot;classify_by_rules priority order&quot;}
+  Q --&gt;|&quot;first match wins&quot;| OUT[&quot;Category A–I + source rules&quot;]
+  Q --&gt;|&quot;no rule matched&quot;| LLM[&quot;llm_classify Groq&quot;]
+  LLM --&gt; OUT2[&quot;Category A–I + source llm&quot;]
+</div>
+<h3>3.1 Rule pass (<code>classify_by_rules</code>)</h3>
+<p>Rules are evaluated in a <strong>fixed priority order</strong> (first <code>True</code> wins). Order is intentional (e.g. internal outage <strong>B</strong> before customer fallout <strong>C</strong>). For <strong>why keywords are hardcoded</strong>, <strong>which fields feed each rule</strong>, and a <strong>per-letter business reading</strong>, see <strong>§4</strong>.</p>
+<p>The evaluation order is:</p>
+<ol>
+<li><strong>B</strong> — <code>is_outage_internal</code> (internal roster + outage/incident language in title or dated summary/topics)</li>
+<li><strong>C</strong> — <code>is_outage_fallout</code> (external customer + fallout/churn language)</li>
+<li><strong>E</strong> — <code>is_comply_v2_launch</code> (Comply v2 / launch GTM signals)</li>
+<li><strong>D</strong> — <code>is_renewal_call</code> (renewal / commercial patterns)</li>
+<li><strong>F</strong> — <code>is_competitive_analysis</code> (competitors, win/loss, deal intelligence)</li>
+<li><strong>A</strong> — <code>is_support_case</code> (support / break-fix style)</li>
+<li><strong>G</strong> — <code>is_product_feedback</code> (feedback / roadmap / feature asks)</li>
+<li><strong>I</strong> — <code>is_compliance_audit</code> (audit / SOC2 / ISO / HIPAA style, with title guards vs demos)</li>
+<li><strong>H</strong> — <code>is_engineering_planning</code> (internal-only + planning cadence, excluding incident titles)</li>
+</ol>
+<p>If <strong>none</strong> of these return <code>True</code>, the rule pass returns <strong><code>None</code></strong> and the pipeline calls the LLM.</p>
+<h3>3.2 LLM fallback (<code>llm_classify</code>)</h3>
+<ul>
+<li><strong>When:</strong> Only if <code>classify_by_rules</code> returns <code>None</code>.</li>
+<li><strong>Why:</strong> Cover ambiguous meetings where keywords and heuristics do not clearly fit one bucket.</li>
+<li><strong>What is sent (token-conscious):</strong> <strong>Not</strong> the full transcript. The model receives a <strong>short structured prompt</strong> built from:</li>
+<li><code>meeting_info.title</code></li>
+<li><code>summary.summary</code> (narrative body)</li>
+<li><code>summary.topics</code> (joined as text)</li>
+<li><strong>Sentiment</strong> from <code>summary.sentimentScore</code> + <code>summary.overallSentiment</code> (via <code>get_sentiment</code>)</li>
+<li><strong>External vs internal</strong> hint from <code>meeting_info.allEmails</code> (via <code>is_external_call</code>)</li>
+<li>Inline reminders of A–I definitions</li>
+<li><strong>Output:</strong> Model is asked to reply with <strong>a single letter</strong>; code parses the first valid <strong>A–I</strong> with <code>parse_llm_letter</code>. If the model is missing, mis-parsed, or errors, behavior falls back to <strong>H</strong> (with logging where applicable).</li>
+</ul>
+<p>So <strong>batch classification saves tokens</strong> by using <strong>rules for every meeting that matches</strong>, and only paying for an LLM round trip when rules abstain.</p>
+<h3>3.3 On-demand transcript summary (dashboard only)</h3>
+<ul>
+<li><strong>Route:</strong> <code>POST /api/conversation/{conversation_id}/llm-summarize</code></li>
+<li><strong>When:</strong> User explicitly clicks <strong>“Process transcript with LLM”</strong> in the UI (not part of batch CSV generation).</li>
+<li><strong>What is sent:</strong> Server builds a blob from <strong>metadata + full plain transcript</strong> (<code>transcript_plaintext_for_llm</code>), capped at <strong>120,000 characters</strong> with a truncation suffix if longer (to respect context limits).</li>
+<li><strong>Why separate:</strong> This is <strong>analyst-grade narrative</strong>, not taxonomy; it would be far more expensive to run for every meeting in batch.</li>
+</ul>
+<hr />
+<h2>4. Rules-based filtering (<code>classify_transcripts_dashboard.py</code>)</h2>
+<p>This section answers: <strong>what kind of rules</strong>, <strong>are they hardcoded</strong>, <strong>why</strong>, and <strong>what business logic / algorithms</strong> they encode.</p>
+<h3>4.1 Are the rules “hardcoded”?</h3>
+<p><strong>Yes.</strong> Each category detector is implemented as <strong>Python functions with fixed keyword lists, date ranges, and product-name strings</strong> embedded in source (for example <code>markers</code>, <code>fallout_terms</code>, <code>launch_terms</code>, <code>rivals</code>, <code>signals</code>, <code>frameworks</code> in <code>is_*</code> helpers).</p>
+<p>There is <strong>no</strong> external rules YAML driving the matchers today (taxonomy <em>names</em> are mirrored in <code>plan.yaml</code> for humans, but the <strong>if/then heuristics</strong> live in code).</p>
+<h3>4.2 Why hardcode heuristics instead of “learn from all fields”?</h3>
+<p>The pipeline <strong>does</strong> observe the main structured fields that exist for every bundle (<code>meeting-info.json</code> + <code>summary.json</code>): <strong>title</strong>, <strong>participant emails</strong>, <strong>start time</strong>, <strong>summary text</strong>, <strong>topics</strong>, and <strong>sentiment</strong>. It does <strong>not</strong> mine arbitrary keys dynamically; instead it applies <strong>hand-authored patterns</strong> that came from <strong>domain observation</strong> (how your meetings are titled, how outages and renewals are phrased, etc.).</p>
+<p>Reasons this design is intentional:</p>
+<table>
+<thead>
+<tr>
+<th>Reason</th>
+<th>Effect</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Determinism</strong></td>
+<td>Same inputs → same label every run; easy to audit for compliance or disputes.</td>
+</tr>
+<tr>
+<td><strong>Cost &amp; speed</strong></td>
+<td>No model call for the majority of meetings that match obvious language.</td>
+</tr>
+<tr>
+<td><strong>Explainability</strong></td>
+<td>You can point to “title contained <code>war room</code> + all internal emails → B”.</td>
+</tr>
+<tr>
+<td><strong>Priority story</strong></td>
+<td>Business order is explicit: e.g. <strong>internal incident (B) before customer fallout (C)</strong> so one meeting cannot satisfy both in conflicting ways—the <strong>first</strong> winning rule wins.</td>
+</tr>
+<tr>
+<td><strong>LLM as safety net</strong></td>
+<td>Anything that does not hit a lexicon still gets a <strong>cheap</strong> single-letter classification from a <strong>short</strong> prompt (not the full transcript).</td>
+</tr>
+</tbody>
+</table>
+<p>Trade-off: new vocabulary, new competitors, or new products <strong>will not</strong> match until someone <strong>extends the lists</strong> or the meeting falls through to the <strong>LLM</strong>.</p>
+<h3>4.3 Shared primitives (algorithms used everywhere)</h3>
+<p>These are the building blocks every rule composes:</p>
+<table>
+<thead>
+<tr>
+<th>Primitive</th>
+<th>Role</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong><code>merge_text(summary)</code></strong></td>
+<td>Concatenates <code>summary.summary</code> with stringified <code>summary.topics</code>; returns <strong>lowercased body</strong> plus <strong>lowercased topics blob</strong> for substring checks.</td>
+</tr>
+<tr>
+<td><strong><code>get_sentiment(summary)</code></strong></td>
+<td>Reads <code>sentimentScore</code> (numeric) and <code>overallSentiment</code> (string); used where tone matters (notably category <strong>C</strong>).</td>
+</tr>
+<tr>
+<td><strong><code>parse_meeting_day(startTime)</code></strong></td>
+<td>Parses calendar day from ISO <code>startTime</code> prefix <code>YYYY-MM-DD</code> for <strong>time-windowed</strong> rules.</td>
+</tr>
+<tr>
+<td><strong><code>is_internal_call</code> / <code>is_external_call</code> (<code>allEmails</code>)</strong></td>
+<td><strong>Hardcoded tenant boundary:</strong> every address must end with <code>@aegiscloud.com</code> for “internal”; <strong>external</strong> if any participant is outside that domain. Empty email lists raise <code>ValueError</code> and the caller treats the check as “no match” for that signal.</td>
+</tr>
+<tr>
+<td><strong>Priority router <code>classify_by_rules</code></strong></td>
+<td>Strict <strong>if / elif</strong> chain: <strong>first function that returns <code>True</code> assigns the letter</strong> and stops.</td>
+</tr>
+</tbody>
+</table>
+<h3>4.4 Rule-by-rule business logic (what each detector encodes)</h3>
+<p>Below is what each <code>is_*</code> function is <em>trying</em> to capture in business language. (Exact strings are in code.)</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;">Order</th>
+<th>Letter</th>
+<th>Function</th>
+<th>Business intent</th>
+<th>Typical signals (hardcoded patterns)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">1</td>
+<td><strong>B</strong></td>
+<td><code>is_outage_internal</code></td>
+<td><strong>Internal war-room / platform incident response</strong> — staff-only bridges, RCAs, not customer venting.</td>
+<td>All participants <code>@aegiscloud.com</code> <strong>and</strong> (title contains incident/outage/war-room/root-cause/escalation-bridge language <strong>or</strong> meeting day in <strong>2026-03-10 … 2026-03-18</strong> with summary mentioning <strong>outage</strong> or <strong>pipeline</strong> — a <strong>fixed post-mortem window</strong> aligned to the “March 10th Detect outage” story in <code>plan.yaml</code>).</td>
+</tr>
+<tr>
+<td style="text-align: right;">2</td>
+<td><strong>C</strong></td>
+<td><code>is_outage_fallout</code></td>
+<td><strong>Customer-facing fallout</strong> — churn pressure, credits, competitors after reliability pain.</td>
+<td>At least one <strong>external</strong> email <strong>and</strong> summary/topic text hits fallout terms (outage, SLA, churn, competitor, etc.) <strong>and</strong> <code>overallSentiment</code> is a <strong>negative / mixed-negative</strong> bucket (requires sentiment field to be present).</td>
+</tr>
+<tr>
+<td style="text-align: right;">3</td>
+<td><strong>E</strong></td>
+<td><code>is_comply_v2_launch</code></td>
+<td><strong>Comply v2 GTM lifecycle</strong> — launch, preview, onboarding, readiness.</td>
+<td>Title or merged summary must mention <strong><code>comply v2</code></strong>, plus launch vocabulary (launch, GA, preview, demo, early access, onboarding, kickoff, readiness).</td>
+</tr>
+<tr>
+<td style="text-align: right;">4</td>
+<td><strong>D</strong></td>
+<td><code>is_renewal_call</code></td>
+<td><strong>Commercial / renewal</strong> conversations with customers.</td>
+<td><strong>External</strong> call <strong>and</strong> renewal/pricing/contract language in <strong>title</strong>, <strong>topics</strong>, or <strong>body</strong>.</td>
+</tr>
+<tr>
+<td style="text-align: right;">5</td>
+<td><strong>F</strong></td>
+<td><code>is_competitive_analysis</code></td>
+<td><strong>Competitive intelligence</strong> — explicit win/loss or named rivals in evaluative context.</td>
+<td>Title phrases like “competitive”, “win/loss”, “vendor comparison” <strong>or</strong> fictional rival names in body (<code>sentinelshield</code>, <code>vaultedge</code>, …) <strong>together with</strong> evaluative words (“evaluating”, “versus”, “vs ”, …).</td>
+</tr>
+<tr>
+<td style="text-align: right;">6</td>
+<td><strong>A</strong></td>
+<td><code>is_support_case</code></td>
+<td><strong>Reactive technical support</strong> — break-fix, integrations, errors.</td>
+<td>Title contains <strong><code>support case #</code></strong> <strong>or</strong> (<strong>external</strong> + body hits troubleshooting tokens: bug, timeout, connector, sync failure, latency, …).</td>
+</tr>
+<tr>
+<td style="text-align: right;">7</td>
+<td><strong>G</strong></td>
+<td><code>is_product_feedback</code></td>
+<td><strong>Structured product / roadmap feedback</strong> from customers.</td>
+<td><strong>External</strong> + hits in title/topics/body for “feature request”, “roadmap”, “pain point”, “feature gap”, etc.</td>
+</tr>
+<tr>
+<td style="text-align: right;">8</td>
+<td><strong>I</strong></td>
+<td><code>is_compliance_audit</code></td>
+<td><strong>Audit / certification prep</strong> (SOC2, ISO, HIPAA, PCI, evidence).</td>
+<td>Title/topics/body framework language; <strong>guards</strong> so a title that is only a “demo/preview” does not false-positive unless audit words still appear.</td>
+</tr>
+<tr>
+<td style="text-align: right;">9</td>
+<td><strong>H</strong></td>
+<td><code>is_engineering_planning</code></td>
+<td><strong>Internal engineering cadence</strong> — default “how we build” bucket when incident language is absent.</td>
+<td><strong>All internal</strong> emails; title must include cadence tokens (<span class="kw-cadence">sprint</span>, <span class="kw-cadence">standup</span>, <span class="kw-cadence">retro</span>, <span class="kw-cadence">roadmap</span>, <span class="kw-cadence">planning</span>, <span class="kw-cadence">sync</span>, <span class="kw-cadence">all hands</span>, …) and <strong>not</strong> <span class="kw-risk">outage</span> / <span class="kw-risk">incident</span> / <span class="kw-risk">war room</span> / <span class="kw-risk">root cause</span> in the title; if specific planning phrases appear in merged summary they reinforce the match, but the function <strong>still returns True when the title alone matched cadence vocabulary</strong> (see code tail).</td>
+</tr>
+</tbody>
+</table>
+<p>Together, this is a <strong>lexicon + roster + calendar + sentiment</strong> expert system—not machine learning on embeddings, but a <strong>transparent policy engine</strong> with a <strong>strict precedence order</strong>.</p>
+<div class="mermaid">
+flowchart TD
+  subgraph inputs[&quot;Signals extracted once per meeting&quot;]
+    T[&quot;title lowercased&quot;]
+    E[&quot;allEmails → internal / external&quot;]
+    D[&quot;startTime → calendar day&quot;]
+    M[&quot;merge_text → body + topics lowercased&quot;]
+    S[&quot;overallSentiment categorical&quot;]
+  end
+
+  subgraph cascade[&quot;Priority cascade first match wins&quot;]
+    B[&quot;B internal outage?&quot;]
+    C[&quot;C external fallout + negative tone?&quot;]
+    E2[&quot;E Comply v2 + launch?&quot;]
+    D2[&quot;D external renewal?&quot;]
+    F2[&quot;F competitive?&quot;]
+    A2[&quot;A support case?&quot;]
+    G2[&quot;G product feedback?&quot;]
+    I2[&quot;I compliance audit?&quot;]
+    H2[&quot;H internal planning?&quot;]
+  end
+
+  inputs --&gt; B
+  B --&gt;|no| C
+  C --&gt;|no| E2
+  E2 --&gt;|no| D2
+  D2 --&gt;|no| F2
+  F2 --&gt;|no| A2
+  A2 --&gt;|no| G2
+  G2 --&gt;|no| I2
+  I2 --&gt;|no| H2
+  H2 --&gt;|no| LLM[&quot;LLM fallback&quot;]
+</div>
+<hr />
+<h2>5. Which fields from the data are used</h2>
+<h3>5.1 Batch classification (per conversation folder)</h3>
+<p><strong>Loaded files (required for classify):</strong></p>
+<table>
+<thead>
+<tr>
+<th>File</th>
+<th>Fields / usage (representative)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>meeting-info.json</strong></td>
+<td><code>title</code>, <code>allEmails</code> (internal/external), <code>startTime</code> (date windows in some rules), <code>duration</code> (CSV output), <code>host</code> / <code>organizerEmail</code> (not used in rule letter choice; used elsewhere in the app)</td>
+</tr>
+<tr>
+<td><strong>summary.json</strong></td>
+<td><code>summary</code> (text body), <code>topics</code> (list), <code>sentimentScore</code>, <code>overallSentiment</code> — merged and searched by rules; same fields feed the LLM fallback prompt</td>
+</tr>
+</tbody>
+</table>
+<p>Rules combine <strong>title</strong>, <strong>email roster</strong>, and <strong>summary text/topics</strong> (and sometimes <strong>meeting day</strong> from <code>startTime</code>) according to each <code>is_*</code> helper in <code>classify_transcripts_dashboard.py</code>.</p>
+<p><strong>CSV row</strong> (<code>build_row_record</code>) additionally exposes: <code>conversation_id</code>, <code>category</code>, <code>category_label</code>, <code>stakeholder_primary</code>, <code>classification_source</code> (<code>rules</code> or <code>llm</code>), <code>sentiment_score</code>, <code>duration_min</code>, <code>start_date</code>, <code>title</code>.</p>
+<h3>5.2 FastAPI drill-down (not used for batch letter choice)</h3>
+<p>For <code>GET /api/conversation/{id}</code>, the server may read <strong>meeting-info.json</strong>, <strong>speaker-meta.json</strong>, <strong>events.json</strong>, <strong>summary.json</strong>, <strong>transcript.json</strong> to power participants, join/leave, saved summary, and colored transcript lines in the flyout.</p>
+<hr />
+<h2>6. LLM logging</h2>
+<p>All logged calls append one JSON object per line to:</p>
+<ul>
+<li><strong>Default path:</strong> <code>dataset/llm_output/llm_calls.jsonl</code></li>
+<li><strong>Override:</strong> environment variable <code>TI_LLM_LOG_FILE</code></li>
+</ul>
+<p>Each record includes <strong>agent instructions</strong>, <strong>full user input</strong> sent to the model, <strong>response</strong> (or <code>null</code>), optional <strong>error</strong>, and <strong>extras</strong> (e.g. <code>conversation_id</code>, <code>model_name</code>, <code>call_site</code> such as <code>llm_classify</code> vs <code>summarize_transcript_via_llm</code>).</p>
+<hr />
+<h2>7. Key outputs on disk</h2>
+<table>
+<thead>
+<tr>
+<th>Artifact</th>
+<th>Produced by</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>dataset/classification_output/all_classified.csv</code></td>
+<td><code>classify_transcripts_dashboard.py</code></td>
+</tr>
+<tr>
+<td><code>dataset/classification_output/*_view.csv</code></td>
+<td>Same (per stakeholder slice)</td>
+</tr>
+<tr>
+<td><code>dataset/llm_output/llm_calls.jsonl</code></td>
+<td><code>llm_call_logger.append_llm_call_log</code> from classify + dashboard summarize</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>8. Mental model in one sentence</h2>
+<p><strong>Nine categories (A–I)</strong> segment every meeting for dashboards; <strong>deterministic rules</strong> over <strong>title + summary + topics + emails (+ dates)</strong> assign most labels cheaply; the <strong>LLM</strong> only runs when rules abstain (short prompt), and a <strong>second, separate LLM</strong> path optionally summarizes the <strong>full transcript</strong> on user demand, with both paths optionally recorded in <strong><code>llm_calls.jsonl</code></strong>.</p>
+<hr />
+<h2>9. Q &amp; A — “duplicates” and the four stakeholder views</h2>
+<h3>Q1: Does this system contain duplicate <em>documents</em> (meeting bundles or CSV master rows)?</h3>
+<p><strong>No.</strong> Each conversation still has <strong>one</strong> directory under <code>dataset/&lt;conversation_id&gt;/</code> and <strong>one</strong> row per meeting in the master file <code>dataset/classification_output/all_classified.csv</code> (one <strong>A–I</strong> letter per meeting from rule-based filtering + optional LLM fallback). There is no second copy of the transcript or meeting JSON created just for categorisation.</p>
+<h3>Q2: Then why does the same meeting seem to appear more than once?</h3>
+<p><strong>Yes — you will see the same meeting listed under more than one of the four stakeholder dashboards.</strong> That is <strong>not</strong> errant duplication of files; it is <strong>by design</strong>.</p>
+<ul>
+<li>Each of the <strong>four</strong> tabs (Support Operations, Revenue &amp; Growth, Product Strategy, Engineering Execution) is a <strong>filtered view</strong> over the <strong>same</strong> underlying rows.</li>
+<li>The views are built from <strong>overlapping sets of category letters</strong> on purpose, so multiple leadership audiences can see a meeting when the theme concerns them both.</li>
+</ul>
+<p>Examples from the current dashboard config:</p>
+<table>
+<thead>
+<tr>
+<th>Category letter</th>
+<th>Can appear in these stakeholder tabs (non-exhaustive overlap)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>E</strong> (Comply v2 launch)</td>
+<td>Revenue &amp; Growth <strong>and</strong> Product Strategy (both include <strong>E</strong>).</td>
+</tr>
+<tr>
+<td><strong>F</strong> (Competitive)</td>
+<td>Revenue &amp; Growth <strong>and</strong> Product Strategy (both include <strong>F</strong>).</td>
+</tr>
+<tr>
+<td><strong>B</strong> (Platform outage / incident)</td>
+<td>Support Operations <strong>and</strong> Engineering Execution (both include <strong>B</strong>).</td>
+</tr>
+</tbody>
+</table>
+<p>So the “duplicate” you notice is the <strong>same row</strong> surfaced in <strong>multiple slices</strong>, not two different classifications or two copies of the bundle.</p>
+<h3>Q3: How does that relate to rule-based filtering?</h3>
+<p><strong>Rule-based filtering assigns exactly one letter A–I</strong> (plus <code>classification_source</code> rules vs LLM). The <strong>four</strong> stakeholder boards are <strong>orthogonal</strong>: they are <strong>presentation filters</strong> that map those letters onto <strong>four</strong> curated “lanes.” Overlap is a product requirement: one meeting, one letter, <strong>many</strong> possible interested audiences—implemented as <strong>shared letters</strong> across view definitions, not duplicate storage.</p>
+<h3>Q4: What is <code>stakeholder_primary</code> in the CSV if views overlap?</h3>
+<p>The CSV still carries a <strong>single</strong> <code>stakeholder_primary</code> (derived from <code>PRIMARY_STAKEHOLDER_BY_CATEGORY</code> in code) for reporting ownership, while the <strong>UI tabs</strong> deliberately show any meeting whose <strong>letter</strong> is in that tab’s allowed list—even if the primary stakeholder key differs from the tab name. Read <strong>primary</strong> as “accountable home,” not “only place this row may appear.”</p>
+      <p class="doc-footer">Regenerate: <code>python3 scripts/build_architecture_html.py</code> · Source: <code>docs/ARCHITECTURE.md</code></p>
+    </article>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+  <script>
+    mermaid.initialize({ startOnLoad: false, theme: "dark", securityLevel: "loose" });
+    mermaid.run({ querySelector: ".mermaid" });
+  </script>
+</body>
+</html>

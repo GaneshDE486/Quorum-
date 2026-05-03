@@ -1,0 +1,101 @@
+conversation_id,title,category,category_label,stakeholder_primary,classification_source,sentiment_score,duration_min,start_date
+01KQ03B0303900521BB089CA,Detect Outage - Remediation Plan Review,B,Platform Outage & Incident Response,support_leaders,rules,2.4,35.2,2026-03-16
+01KQ0C1280EDA4E70AAD7C35,Support Case #9279 - Summit Trust Billing Inquiry,D,Contract Renewal & Commercial Negotiation,sales_managers,rules,3.8,23.8,2026-02-06
+01KQ0CAE7F064EC93F0540CA,Weekly Engineering Standup,E,Comply v2 Launch & Go-to-Market,sales_managers,rules,3.6,29.0,2026-02-16
+01KQ0DFE299AC7A74E8022CA,Aegis / Redwood Clinical - ISO 27001 Preparation,E,Comply v2 Launch & Go-to-Market,sales_managers,rules,4.8,28.8,2026-04-26
+01KQ0F8AFF3DA34FD4580008,Aegis / Cobalt Software - Q2 Planning,D,Contract Renewal & Commercial Negotiation,sales_managers,rules,3.4,41.2,2026-04-11
+01KQ1267C6AA7D9B3125FEC8,SOC 2 Audit Preparation - Internal,I,Compliance & Audit Preparation,engineering_leads,rules,3.4,36.9,2026-02-26
+01KQ1A6B7E81B06F4A13B60D,Support Case #6977 - Brightpath Commerce Slow Backup Performance,A,Technical Support & Troubleshooting,support_leaders,rules,2.8,15.8,2026-02-21
+01KQ1DC6CA536DE1B31ED8F5,Aegis / Atlas Precision - Contract Discussion,D,Contract Renewal & Commercial Negotiation,sales_managers,rules,3.7,33.5,2026-02-25
+01KQ1DCC80852AE384C898C9,Aegis / Quantum Edge - Renewal Concerns,C,Customer Outage Fallout & Churn Risk,support_leaders,rules,2.4,45.0,2026-03-19
+01KQ1DE954A807A5D2653175,Comply v2 - Launch Readiness Review,E,Comply v2 Launch & Go-to-Market,sales_managers,rules,3.6,39.3,2026-03-24
+01KQ2217B066855A3B7814CB,Aegis / Meridian Capital - Service Reliability Discussion,C,Customer Outage Fallout & Churn Risk,support_leaders,rules,2.4,43.4,2026-03-14
+01KQ2331EFD78BF3B1CAB747,Detect Outage - Customer Impact Assessment,B,Platform Outage & Incident Response,support_leaders,rules,1.8,48.0,2026-03-12
+01KQ25D8AED944B5D2A9FF60,Support Case #1514 - Meridian Capital Granular Restore Request,A,Technical Support & Troubleshooting,support_leaders,rules,3.4,19.3,2026-03-26
+01KQ298F2846EFE59B0D70E2,Competitive Threat Assessment - Post Outage,B,Platform Outage & Incident Response,support_leaders,rules,2.3,26.2,2026-03-20
+01KQ2B4878EC7B3EE5547007,Aegis / Stratos Cloud - Audit Preparation,A,Technical Support & Troubleshooting,support_leaders,rules,4.7,23.3,2026-03-06
+01KQ2D93184912F0147315E7,URGENT: Blackridge Investments - Complete Loss of Threat Visibility,C,Customer Outage Fallout & Churn Risk,support_leaders,rules,1.6,21.1,2026-03-12
+01KQ31ED026F745FE2A55CCD,Identity Team - Q2 Roadmap,I,Compliance & Audit Preparation,engineering_leads,rules,4.4,47.6,2026-04-13
+01KQ325BDEDEE927D2970775,Support Case #5889 - Ridgeline Logistics Detect Latency Issues,C,Customer Outage Fallout & Churn Risk,support_leaders,rules,2.4,11.4,2026-03-14
+01KQ351E141926AB7CAB668D,Aegis / Northstar Pharma - Urgent: Detect Outage Impact,C,Customer Outage Fallout & Churn Risk,support_leaders,rules,2.1,48.1,2026-03-12
+01KQ38C4101D6774F2F02331,INCIDENT: Detect Pipeline Failure - War Room,B,Platform Outage & Incident Response,support_leaders,rules,1.8,29.9,2026-03-10
+01KQ38FE02AEE5AA5157F042,Support Case #3296 - Pinnacle Insurance Comply v2 Report Formatting Issue,E,Comply v2 Launch & Go-to-Market,sales_managers,rules,3.4,14.1,2026-04-08
+01KQ3BD8DEEBC7FECD107F0F,Aegis / Blackridge Investments - HIPAA Compliance Review,E,Comply v2 Launch & Go-to-Market,sales_managers,rules,4.7,49.1,2026-04-21
+01KQ3C837D7EF689408DCF95,Support Case #2638 - Pineridge Systems CloudPrime S3 Backup Connector,A,Technical Support & Troubleshooting,support_leaders,rules,3.9,19.1,2026-03-04
+01KQ3CE40428CCC5FF433FFC,Detect Outage - Post-Incident Review,B,Platform Outage & Incident Response,support_leaders,rules,2.8,21.4,2026-03-18
+01KQ3D8C1EF16C042F31FAFD,Aegis / Trailhead Marketplace - Renewal Confirmation,E,Comply v2 Launch & Go-to-Market,sales_managers,rules,4.5,46.6,2026-04-05
+01KQ3F90FF9EBC3DB3632514,Identity Team - Sprint Retro,H,Engineering Planning & Execution,engineering_leads,rules,3.4,26.0,2026-03-28
+01KQ410FB7E434BA3F99EE7D,Aegis / Axiom Labs - Multi-Year Renewal,D,Contract Renewal & Commercial Negotiation,sales_managers,rules,4.2,48.8,2026-04-17
+01KQ41FB5CCFD9EA583FB020,Aegis / Harborview Banking - Threat Detection Tuning,A,Technical Support & Troubleshooting,support_leaders,llm,3.9,36.3,2026-03-05
+01KQ445B1B5B890316C9E300,Weekly Engineering Standup,I,Compliance & Audit Preparation,engineering_leads,rules,3.5,45.2,2026-04-17
+01KQ4529010F423FD9DB40BD,Win/Loss Analysis - Q1,F,Competitive Threat & Win/Loss Analysis,sales_managers,rules,2.4,16.5,2026-04-24
+01KQ45C0AD36B351A3571940,Aegis / Silverline Brands - Comply v2 Early Access Demo,E,Comply v2 Launch & Go-to-Market,sales_managers,rules,4.8,50.3,2026-04-03
+01KQ45C76AF3AEA6B3EA6697,Aegis / Steelpoint Manufacturing - Contract Review,C,Customer Outage Fallout & Churn Risk,support_leaders,rules,2.8,34.6,2026-03-24
+01KQ45F6F7349D0A620571F1,Aegis / Brightpath Commerce - Competitive Evaluation,C,Customer Outage Fallout & Churn Risk,support_leaders,rules,2.6,21.0,2026-04-22
+01KQ46A9DE0AECB006D897A0,Detect Outage - Escalation Bridge,B,Platform Outage & Incident Response,support_leaders,rules,1.8,17.1,2026-03-11
+01KQ4D01DCB15C69672AB5AF,Aegis / Clearwater Medical - Comply v2 Deployment Kickoff,E,Comply v2 Launch & Go-to-Market,sales_managers,rules,4.8,42.8,2026-04-07
+01KQ4D504CE09A8F6ECA1F5A,Product Sync - Identity Roadmap,H,Engineering Planning & Execution,engineering_leads,rules,3.8,39.4,2026-02-09
+01KQ4D71CDFB1045A2458216,Aegis / Bridgeport Health - Renewal Finalization,D,Contract Renewal & Commercial Negotiation,sales_managers,rules,4.1,39.5,2026-04-23
+01KQ4EE836687F95080D92AB,Detect Team - Sprint Planning,H,Engineering Planning & Execution,engineering_leads,rules,3.6,25.6,2026-02-05
+01KQ51DC4345D9DAE005678C,Aegis / Redwood Clinical - Product Feedback Session,F,Competitive Threat & Win/Loss Analysis,sales_managers,rules,3.2,40.3,2026-02-22
+01KQ54917E3931712516916D,Aegis / Nimbus Platform - Comply v2 Preview,E,Comply v2 Launch & Go-to-Market,sales_managers,rules,4.8,54.3,2026-04-01
+01KQ560FF1570C5E7F71D752,Aegis / Coastal Living Co - Protect Module Expansion,A,Technical Support & Troubleshooting,support_leaders,rules,4.8,45.7,2026-04-19
+01KQ56786DD1E8A1BF174FDD,Support Case #1993 - Forge Industries Comply v2 Early Access Question,E,Comply v2 Launch & Go-to-Market,sales_managers,rules,4.8,25.6,2026-04-03
+01KQ56AA6B60801ABC01AB1C,Support Case #8179 - Clearwater Medical Overage Charges Dispute,C,Customer Outage Fallout & Churn Risk,support_leaders,rules,2.4,21.5,2026-04-10
+01KQ56D878454E5783DC6D94,Support Case #3536 - Stratos Cloud LogVault Integration Timeout,C,Customer Outage Fallout & Churn Risk,support_leaders,rules,2.4,12.8,2026-04-22
+01KQ5A966832A146DA4B7D41,Aegis / Summit Trust - Platform Concerns Discussion,C,Customer Outage Fallout & Churn Risk,support_leaders,rules,2.4,53.0,2026-03-26
+01KQ5AFAE8264DDC0ED2AE7F,Aegis / Crestline Wealth - Identity Module Deployment,A,Technical Support & Troubleshooting,support_leaders,rules,4.8,35.7,2026-04-24
+01KQ5BB8521F99E55470206E,Detect Team - Sprint Planning,H,Engineering Planning & Execution,engineering_leads,rules,4.1,25.1,2026-03-02
+01KQ5D47170D4828E89EDE37,Support Case #7537 - Forge Industries Detect Recovery Confirmation,A,Technical Support & Troubleshooting,support_leaders,rules,3.4,27.8,2026-03-18
+01KQ5EC1665DCFD7A6B62A59,Support Case #8749 - Coastal Living Co SAML Certificate Rotation Bug,C,Customer Outage Fallout & Churn Risk,support_leaders,rules,2.2,10.1,2026-03-29
+01KQ5F364545B542671FF9CE,Support Case #3546 - Meridian Capital SCIM Provisioning Request,A,Technical Support & Troubleshooting,support_leaders,rules,3.7,21.3,2026-03-07
+01KQ65D43540846FA994B6C4,Aegis / Frostbyte AI - Product Feedback,A,Technical Support & Troubleshooting,support_leaders,rules,3.7,39.4,2026-04-25
+01KQ68FB3E9E60C4477CDAB4,Comply v2 - GA Deployment Plan,E,Comply v2 Launch & Go-to-Market,sales_managers,rules,4.7,29.5,2026-04-01
+01KQ6A5CEAAFFBE3B0099E75,Support Case #6539 - Steelpoint Manufacturing LDAP Sync Failures,C,Customer Outage Fallout & Churn Risk,support_leaders,rules,2.4,20.9,2026-03-22
+01KQ6CAA850EAFDC48B52846,Aegis / Ironworks Corp - Vendor Comparison Discussion,C,Customer Outage Fallout & Churn Risk,support_leaders,rules,2.6,33.9,2026-04-14
+01KQ764171AC27A3A94DC695,Detect Reliability - 30-Day Review,E,Comply v2 Launch & Go-to-Market,sales_managers,rules,2.8,45.8,2026-04-07
+01KQ773D68723289E4A98889,Support Case #7572 - Brightpath Commerce Invoice Discrepancy,D,Contract Renewal & Commercial Negotiation,sales_managers,rules,3.7,12.6,2026-02-27
+01KQ77F2867FC54E13A8C495,Aegis / Brightpath Commerce - Detect Module Deployment,A,Technical Support & Troubleshooting,support_leaders,rules,3.9,45.8,2026-02-11
+01KQ7B802912366FC0A24D4F,All Hands - April Update,E,Comply v2 Launch & Go-to-Market,sales_managers,rules,3.6,48.8,2026-04-26
+01KQ7BF0D56037FF89DC89B6,Support Case #3266 - Trailhead Marketplace Detect Alerts Not Firing,C,Customer Outage Fallout & Churn Risk,support_leaders,rules,1.4,10.0,2026-03-11
+01KQ7F58A2E07B857C24624D,Competitive Landscape Review,F,Competitive Threat & Win/Loss Analysis,sales_managers,rules,3.4,20.2,2026-02-19
+01KQ7FA71CF70FAFEE4B6251,Aegis / Nova Retail Group - Renewal Discussion,C,Customer Outage Fallout & Churn Risk,support_leaders,rules,2.6,33.4,2026-03-21
+01KQ85D10E82A26A8F754FB8,Aegis / Bridgeport Health - Compliance Review,E,Comply v2 Launch & Go-to-Market,sales_managers,rules,4.1,33.4,2026-02-13
+01KQ88B8EAEAA819C26CCBE7,ESCALATION: Northstar Pharma - Detect Outage Impact on Compliance,C,Customer Outage Fallout & Churn Risk,support_leaders,rules,2.1,13.3,2026-03-15
+01KQ8C5A044F54EE1774D53C,Aegis / Helix Data - Post-Incident Review,C,Customer Outage Fallout & Churn Risk,support_leaders,rules,2.3,35.8,2026-03-17
+01KQ8D9A06510DD623EFB1A6,Aegis / Pinnacle Insurance - Detect Roadmap Review,E,Comply v2 Launch & Go-to-Market,sales_managers,rules,3.6,47.9,2026-04-16
+01KQ92EA85FE4C537400227D,Support Case #8811 - Blackridge Investments Custom Compliance Template,E,Comply v2 Launch & Go-to-Market,sales_managers,rules,4.8,9.3,2026-04-25
+01KQ94C2B8B9B4668F3D3491,Support Case #6573 - Ridgeline Logistics Detect Data Gaps,C,Customer Outage Fallout & Churn Risk,support_leaders,rules,2.1,17.6,2026-03-13
+01KQ9772B2348F500FB09D1E,Support Case #3677 - Coastal Living Co MFA Token Failures,A,Technical Support & Troubleshooting,support_leaders,rules,2.2,13.9,2026-02-24
+01KQ9A6BE09D73A9BB5798C7,Support Case #3615 - Nimbus Platform Custom Report Request,A,Technical Support & Troubleshooting,support_leaders,rules,3.5,14.1,2026-02-10
+01KQ9BB82FD97C9607D57E90,Aegis / Coastal Living Co - Onboarding Kickoff,A,Technical Support & Troubleshooting,support_leaders,rules,4.9,30.8,2026-02-04
+01KQ9BCA1794C9472726FFAD,Comply v2 - Adoption Metrics Review,E,Comply v2 Launch & Go-to-Market,sales_managers,rules,4.7,30.9,2026-04-22
+01KQA0F0BE68E74D66EB4171,Competitive Response Strategy,E,Comply v2 Launch & Go-to-Market,sales_managers,rules,3.6,34.3,2026-04-10
+01KQA1AFDC1306A000B0C7D9,Aegis / Vanta Health Systems - Backup Strategy Workshop,A,Technical Support & Troubleshooting,support_leaders,rules,4.7,43.3,2026-02-28
+01KQA502E222E2A60330237B,Aegis / Pineridge Systems - Q1 Business Review,E,Comply v2 Launch & Go-to-Market,sales_managers,rules,4.7,41.5,2026-03-03
+01KQA7DFCE1285F52192B34B,Support Case #9856 - Silverline Brands Backup Window Exceeded,A,Technical Support & Troubleshooting,support_leaders,rules,2.4,28.4,2026-04-12
+01KQAC572C34475A8791F2C3,Protect Team - Quarterly Planning,H,Engineering Planning & Execution,engineering_leads,rules,4.4,30.8,2026-02-23
+01KQADC32D89E2B76B698E84,Support Case #6635 - Nova Retail Group SSO Login Failures,C,Customer Outage Fallout & Churn Risk,support_leaders,rules,2.3,24.1,2026-02-14
+01KQADF3D76E82BF8BA19AF2,All Hands - February Wrap,E,Comply v2 Launch & Go-to-Market,sales_managers,rules,3.5,20.5,2026-02-28
+01KQAEA50436D047BC39CFC7,Aegis / Crestline Wealth - Account Review,D,Contract Renewal & Commercial Negotiation,sales_managers,rules,3.8,48.7,2026-02-17
+01KQAFB8DBF6E1E2FDEF0B75,Aegis / Maplewood Goods - SOC 2 Prep Review,E,Comply v2 Launch & Go-to-Market,sales_managers,rules,4.8,22.4,2026-02-27
+01KQB3B16F255B65F39597D0,Comply v2 - Design Review,E,Comply v2 Launch & Go-to-Market,sales_managers,rules,4.4,31.8,2026-02-12
+01KQB632F1ADC378C42F2C03,Support Case #7570 - Silverline Brands Comply v2 License Upgrade,E,Comply v2 Launch & Go-to-Market,sales_managers,rules,3.9,16.3,2026-04-18
+01KQB95605C6F873C6036285,Aegis / Forge Industries - PCI DSS Compliance Review,E,Comply v2 Launch & Go-to-Market,sales_managers,rules,4.1,24.4,2026-04-09
+01KQBB7C4D4789DB2F3DA9C2,Support Case #1750 - Vanta Health Systems SIEM Connector Issue,A,Technical Support & Troubleshooting,support_leaders,rules,2.4,29.7,2026-02-18
+01KQBBF753B44DE677670E6D,Support Case #6147 - Summit Trust Detect Alert Delays,C,Customer Outage Fallout & Churn Risk,support_leaders,rules,2.4,16.7,2026-04-15
+01KQC1267BEB344076DD7656,Aegis / Ironclad Financial - Account Recovery Check-in,C,Customer Outage Fallout & Churn Risk,support_leaders,rules,2.8,35.3,2026-03-28
+01KQC166F678CBA584AAFF8B,Support Case #7615 - Crestline Wealth Group Policy Sync Delay,D,Contract Renewal & Commercial Negotiation,sales_managers,rules,2.4,20.7,2026-04-27
+01KQC3A2EBC501837E973B16,Aegis / Frostbyte AI - Identity Module Setup,D,Contract Renewal & Commercial Negotiation,sales_managers,rules,4.8,32.3,2026-02-19
+01KQCA6EA8B603EBB6C9FE34,Aegis / Ridgeline Logistics - Identity Roadmap Discussion,D,Contract Renewal & Commercial Negotiation,sales_managers,rules,3.4,28.6,2026-03-07
+01KQCF9872BF130D33B1B5EC,Comply v2 - Launch Day Checklist,E,Comply v2 Launch & Go-to-Market,sales_managers,rules,4.8,41.6,2026-04-04
+01KQD1270E98A7DFC55ADCF8,Protect Performance - Scalability Concerns,E,Comply v2 Launch & Go-to-Market,sales_managers,rules,2.2,23.5,2026-04-15
+01KQD199788883B6F18C81E8,Aegis / Atlas Precision - Annual Review & Renewal,D,Contract Renewal & Commercial Negotiation,sales_managers,rules,4.3,29.7,2026-04-28
+01KQD4D9DEBA2D55AC2AA9F5,Aegis / Keystone Health - Renewal Planning,E,Comply v2 Launch & Go-to-Market,sales_managers,rules,4.4,28.5,2026-03-09
+01KQDD5172176D02DB51360A,Support Case #3286 - Vanta Health Systems API Integration Error,C,Customer Outage Fallout & Churn Risk,support_leaders,rules,2.4,21.0,2026-02-03
+01KQE110900B8A65D80AE694,Detect Outage - Root Cause Analysis,B,Platform Outage & Incident Response,support_leaders,rules,2.4,15.9,2026-03-14
+01KQEDB92E33CF9945A7F71B,URGENT: Cobalt Software - Aegis Detect Dashboard Down,C,Customer Outage Fallout & Churn Risk,support_leaders,rules,1.8,13.4,2026-03-10
+01KQEDE682B4A8D67C657CF1,Support Case #3103 - Silverline Brands Detect False Positives After Patch,D,Contract Renewal & Commercial Negotiation,sales_managers,rules,2.4,13.8,2026-03-16
+01KQF9600A904ADE8605B3F0,Detect Team - Reliability Sprint Retro,H,Engineering Planning & Execution,engineering_leads,rules,4.8,18.5,2026-04-28
+01KQFEEFFF8E80B0DFD10880,SOC 2 Type II - Final Review,I,Compliance & Audit Preparation,engineering_leads,rules,4.7,40.4,2026-04-20
+01KQFFC0F889AE8CFEE7A00D,Aegis / Blackridge Investments - Renewal Discussion,E,Comply v2 Launch & Go-to-Market,sales_managers,rules,4.7,54.1,2026-02-07

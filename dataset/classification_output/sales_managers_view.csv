@@ -1,0 +1,44 @@
+conversation_id,title,category,category_label,stakeholder_primary,classification_source,sentiment_score,duration_min,start_date
+01KQ0C1280EDA4E70AAD7C35,Support Case #9279 - Summit Trust Billing Inquiry,D,Contract Renewal & Commercial Negotiation,sales_managers,rules,3.8,23.8,2026-02-06
+01KQ0CAE7F064EC93F0540CA,Weekly Engineering Standup,E,Comply v2 Launch & Go-to-Market,sales_managers,rules,3.6,29.0,2026-02-16
+01KQ0DFE299AC7A74E8022CA,Aegis / Redwood Clinical - ISO 27001 Preparation,E,Comply v2 Launch & Go-to-Market,sales_managers,rules,4.8,28.8,2026-04-26
+01KQ0F8AFF3DA34FD4580008,Aegis / Cobalt Software - Q2 Planning,D,Contract Renewal & Commercial Negotiation,sales_managers,rules,3.4,41.2,2026-04-11
+01KQ1DC6CA536DE1B31ED8F5,Aegis / Atlas Precision - Contract Discussion,D,Contract Renewal & Commercial Negotiation,sales_managers,rules,3.7,33.5,2026-02-25
+01KQ1DE954A807A5D2653175,Comply v2 - Launch Readiness Review,E,Comply v2 Launch & Go-to-Market,sales_managers,rules,3.6,39.3,2026-03-24
+01KQ38FE02AEE5AA5157F042,Support Case #3296 - Pinnacle Insurance Comply v2 Report Formatting Issue,E,Comply v2 Launch & Go-to-Market,sales_managers,rules,3.4,14.1,2026-04-08
+01KQ3BD8DEEBC7FECD107F0F,Aegis / Blackridge Investments - HIPAA Compliance Review,E,Comply v2 Launch & Go-to-Market,sales_managers,rules,4.7,49.1,2026-04-21
+01KQ3D8C1EF16C042F31FAFD,Aegis / Trailhead Marketplace - Renewal Confirmation,E,Comply v2 Launch & Go-to-Market,sales_managers,rules,4.5,46.6,2026-04-05
+01KQ410FB7E434BA3F99EE7D,Aegis / Axiom Labs - Multi-Year Renewal,D,Contract Renewal & Commercial Negotiation,sales_managers,rules,4.2,48.8,2026-04-17
+01KQ4529010F423FD9DB40BD,Win/Loss Analysis - Q1,F,Competitive Threat & Win/Loss Analysis,sales_managers,rules,2.4,16.5,2026-04-24
+01KQ45C0AD36B351A3571940,Aegis / Silverline Brands - Comply v2 Early Access Demo,E,Comply v2 Launch & Go-to-Market,sales_managers,rules,4.8,50.3,2026-04-03
+01KQ4D01DCB15C69672AB5AF,Aegis / Clearwater Medical - Comply v2 Deployment Kickoff,E,Comply v2 Launch & Go-to-Market,sales_managers,rules,4.8,42.8,2026-04-07
+01KQ4D71CDFB1045A2458216,Aegis / Bridgeport Health - Renewal Finalization,D,Contract Renewal & Commercial Negotiation,sales_managers,rules,4.1,39.5,2026-04-23
+01KQ51DC4345D9DAE005678C,Aegis / Redwood Clinical - Product Feedback Session,F,Competitive Threat & Win/Loss Analysis,sales_managers,rules,3.2,40.3,2026-02-22
+01KQ54917E3931712516916D,Aegis / Nimbus Platform - Comply v2 Preview,E,Comply v2 Launch & Go-to-Market,sales_managers,rules,4.8,54.3,2026-04-01
+01KQ56786DD1E8A1BF174FDD,Support Case #1993 - Forge Industries Comply v2 Early Access Question,E,Comply v2 Launch & Go-to-Market,sales_managers,rules,4.8,25.6,2026-04-03
+01KQ68FB3E9E60C4477CDAB4,Comply v2 - GA Deployment Plan,E,Comply v2 Launch & Go-to-Market,sales_managers,rules,4.7,29.5,2026-04-01
+01KQ764171AC27A3A94DC695,Detect Reliability - 30-Day Review,E,Comply v2 Launch & Go-to-Market,sales_managers,rules,2.8,45.8,2026-04-07
+01KQ773D68723289E4A98889,Support Case #7572 - Brightpath Commerce Invoice Discrepancy,D,Contract Renewal & Commercial Negotiation,sales_managers,rules,3.7,12.6,2026-02-27
+01KQ7B802912366FC0A24D4F,All Hands - April Update,E,Comply v2 Launch & Go-to-Market,sales_managers,rules,3.6,48.8,2026-04-26
+01KQ7F58A2E07B857C24624D,Competitive Landscape Review,F,Competitive Threat & Win/Loss Analysis,sales_managers,rules,3.4,20.2,2026-02-19
+01KQ85D10E82A26A8F754FB8,Aegis / Bridgeport Health - Compliance Review,E,Comply v2 Launch & Go-to-Market,sales_managers,rules,4.1,33.4,2026-02-13
+01KQ8D9A06510DD623EFB1A6,Aegis / Pinnacle Insurance - Detect Roadmap Review,E,Comply v2 Launch & Go-to-Market,sales_managers,rules,3.6,47.9,2026-04-16
+01KQ92EA85FE4C537400227D,Support Case #8811 - Blackridge Investments Custom Compliance Template,E,Comply v2 Launch & Go-to-Market,sales_managers,rules,4.8,9.3,2026-04-25
+01KQ9BCA1794C9472726FFAD,Comply v2 - Adoption Metrics Review,E,Comply v2 Launch & Go-to-Market,sales_managers,rules,4.7,30.9,2026-04-22
+01KQA0F0BE68E74D66EB4171,Competitive Response Strategy,E,Comply v2 Launch & Go-to-Market,sales_managers,rules,3.6,34.3,2026-04-10
+01KQA502E222E2A60330237B,Aegis / Pineridge Systems - Q1 Business Review,E,Comply v2 Launch & Go-to-Market,sales_managers,rules,4.7,41.5,2026-03-03
+01KQADF3D76E82BF8BA19AF2,All Hands - February Wrap,E,Comply v2 Launch & Go-to-Market,sales_managers,rules,3.5,20.5,2026-02-28
+01KQAEA50436D047BC39CFC7,Aegis / Crestline Wealth - Account Review,D,Contract Renewal & Commercial Negotiation,sales_managers,rules,3.8,48.7,2026-02-17
+01KQAFB8DBF6E1E2FDEF0B75,Aegis / Maplewood Goods - SOC 2 Prep Review,E,Comply v2 Launch & Go-to-Market,sales_managers,rules,4.8,22.4,2026-02-27
+01KQB3B16F255B65F39597D0,Comply v2 - Design Review,E,Comply v2 Launch & Go-to-Market,sales_managers,rules,4.4,31.8,2026-02-12
+01KQB632F1ADC378C42F2C03,Support Case #7570 - Silverline Brands Comply v2 License Upgrade,E,Comply v2 Launch & Go-to-Market,sales_managers,rules,3.9,16.3,2026-04-18
+01KQB95605C6F873C6036285,Aegis / Forge Industries - PCI DSS Compliance Review,E,Comply v2 Launch & Go-to-Market,sales_managers,rules,4.1,24.4,2026-04-09
+01KQC166F678CBA584AAFF8B,Support Case #7615 - Crestline Wealth Group Policy Sync Delay,D,Contract Renewal & Commercial Negotiation,sales_managers,rules,2.4,20.7,2026-04-27
+01KQC3A2EBC501837E973B16,Aegis / Frostbyte AI - Identity Module Setup,D,Contract Renewal & Commercial Negotiation,sales_managers,rules,4.8,32.3,2026-02-19
+01KQCA6EA8B603EBB6C9FE34,Aegis / Ridgeline Logistics - Identity Roadmap Discussion,D,Contract Renewal & Commercial Negotiation,sales_managers,rules,3.4,28.6,2026-03-07
+01KQCF9872BF130D33B1B5EC,Comply v2 - Launch Day Checklist,E,Comply v2 Launch & Go-to-Market,sales_managers,rules,4.8,41.6,2026-04-04
+01KQD1270E98A7DFC55ADCF8,Protect Performance - Scalability Concerns,E,Comply v2 Launch & Go-to-Market,sales_managers,rules,2.2,23.5,2026-04-15
+01KQD199788883B6F18C81E8,Aegis / Atlas Precision - Annual Review & Renewal,D,Contract Renewal & Commercial Negotiation,sales_managers,rules,4.3,29.7,2026-04-28
+01KQD4D9DEBA2D55AC2AA9F5,Aegis / Keystone Health - Renewal Planning,E,Comply v2 Launch & Go-to-Market,sales_managers,rules,4.4,28.5,2026-03-09
+01KQEDE682B4A8D67C657CF1,Support Case #3103 - Silverline Brands Detect False Positives After Patch,D,Contract Renewal & Commercial Negotiation,sales_managers,rules,2.4,13.8,2026-03-16
+01KQFFC0F889AE8CFEE7A00D,Aegis / Blackridge Investments - Renewal Discussion,E,Comply v2 Launch & Go-to-Market,sales_managers,rules,4.7,54.1,2026-02-07
