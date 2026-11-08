@@ -1,4 +1,4 @@
-# Transcript Intelligence
+# Quorum
 
 Meeting bundles under `dataset/<conversation_id>/` are classified into nine categories (**A–I**) with **rules-first** batch logic and optional **Groq** LLM fallback. A **FastAPI** app serves stakeholder dashboards, per-meeting drill-down, and optional **on-demand** full-transcript summarisation.
 

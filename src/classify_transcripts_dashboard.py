@@ -1118,7 +1118,7 @@ def write_plotly_html_report(
             )
         )
     fig.update_layout(
-        title="Transcript Intelligence – stakeholder category counts",
+        title="Quorum – stakeholder category counts",
         barmode="group",
         legend_title="Dashboard",
         xaxis_tickangle=-25,
@@ -1151,7 +1151,7 @@ def write_simple_html_dashboard(
     parts = [
         "<!DOCTYPE html>",
         "<html lang='en'><head><meta charset='utf-8'>",
-        "<title>Transcript Intelligence – stakeholder views</title>",
+        "<title>Quorum – stakeholder views</title>",
         "<style>",
         "body{font-family:system-ui,Segoe UI,Helvetica,Arial,sans-serif;margin:24px;background:#f6f7fb;}",
         "h1{font-size:1.35rem;color:#1a1a2e;}",
@@ -1168,7 +1168,7 @@ def write_simple_html_dashboard(
         ".lbl{font-size:.72rem;color:#555;margin-top:10px;text-align:center;line-height:1.35;}",
         ".cnt{font-weight:600;font-size:.85rem;color:#1a1a2e;margin-bottom:6px;}",
         "</style></head><body>",
-        "<h1>Transcript Intelligence – stakeholder category counts</h1>",
+        "<h1>Quorum – stakeholder category counts</h1>",
         "<p style='color:#666;max-width:720px;'>Each panel shows one stakeholder dashboard. ",
         "Bars are scaled to the highest count in that panel.</p>",
     ]

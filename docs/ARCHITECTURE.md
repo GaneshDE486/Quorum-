@@ -1,4 +1,4 @@
-# Transcript Intelligence — Architecture & Classification
+# Quorum — Architecture & Classification
 
 This document describes how meeting data is split into categories, when the LLM runs, which JSON fields drive each step, and how the pieces connect. It matches the current code under `src/`.
 

@@ -35,215 +35,73 @@ SHELL_HEAD = """<!DOCTYPE html>
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Architecture — Transcript Intelligence</title>
+  <title>Quorum — Architecture</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400..800;1,600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,520;9..144,650&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --text: #f4f1ff;
-      --muted: #9d94b8;
-      --accent: #5eead4;
-      --accent-2: #f0abfc;
-      --border: rgba(167, 139, 250, 0.24);
+      --text: #1c1612;
+      --muted: #6d6258;
+      --accent: #8d3b24;
+      --accent-2: #2c4638;
+      --border: #d8ccba;
     }
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
     body {
       margin: 0;
-      font-family: "Plus Jakarta Sans", system-ui, sans-serif;
-      background-color: #08070f;
-      background-image:
-        radial-gradient(ellipse 100% 80% at 0% -20%, rgba(139, 92, 246, 0.34), transparent 55%),
-        radial-gradient(ellipse 90% 55% at 100% 8%, rgba(20, 184, 166, 0.18), transparent 52%),
-        radial-gradient(ellipse 70% 45% at 85% 100%, rgba(251, 113, 133, 0.11), transparent 42%),
-        linear-gradient(180deg, #0a0912 0%, #14122a 38%, #0b0a12 100%);
+      font-family: "Figtree", "Segoe UI", sans-serif;
+      background: #f3ecdf;
       color: var(--text);
-      line-height: 1.62;
+      line-height: 1.65;
       min-height: 100vh;
     }
     .doc-top {
-      position: sticky;
-      top: 0;
-      z-index: 20;
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: space-between;
-      gap: 0.75rem;
-      width: 100%;
-      padding: 0.9rem clamp(1rem, 3vw, 2.5rem);
-      background: rgba(8, 7, 15, 0.9);
-      backdrop-filter: blur(14px);
-      border-bottom: 1px solid rgba(94, 234, 212, 0.22);
+      position: sticky; top: 0; z-index: 20;
+      display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.75rem;
+      padding: 0.85rem clamp(1rem, 3vw, 2rem);
+      background: #f3ecdf;
+      color: var(--text);
+      border-bottom: 1px solid #1c1612;
     }
-    .doc-top a {
-      color: var(--accent);
-      text-decoration: none;
-      font-weight: 650;
-      font-size: 0.9rem;
+    .doc-top a { color: #1c1612; text-decoration: none; font-family: Fraunces, Georgia, serif; font-weight: 560; font-size: 1.35rem; }
+    .doc-top a:hover { color: var(--accent); }
+    .doc-top span { font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
+    .doc-wrap { width: min(860px, 100%); margin: 0 auto; padding: 1.5rem 1.15rem 3rem; }
+    .doc-article { background: transparent; border: none; padding: 0; box-shadow: none; }
+    .doc-article h1 { font-family: Fraunces, Georgia, serif; font-weight: 560; font-size: clamp(1.8rem, 4vw, 2.5rem); letter-spacing: -0.03em; line-height: 1.1; margin: 0 0 0.8rem; color: #1c1612; }
+    .doc-article h2 { font-family: Fraunces, Georgia, serif; font-weight: 560; font-size: 1.35rem; margin: 2rem 0 0.6rem; padding-bottom: 0.35rem; border-bottom: 1px solid #1c1612; border-left: none; color: #1c1612; }
+    .doc-article h3 { font-size: 1.02rem; margin: 1.3rem 0 0.35rem; color: var(--accent); }
+    .doc-article h4 { margin: 1rem 0 0.3rem; color: var(--accent-2); }
+    .doc-article p, .doc-article li { color: #3a322c; }
+    .doc-article a { color: var(--accent); font-weight: 650; }
+    .doc-article hr { border: none; border-top: 1px solid var(--border); margin: 1.6rem 0; }
+    .doc-article strong { color: #1c1612; }
+    .doc-article code { font-size: 0.86em; background: #efe4d4; padding: 0.05rem 0.3rem; border: none; color: #1c1612; }
+    .doc-article blockquote { margin: 0.8rem 0; padding: 0.2rem 0 0.2rem 0.8rem; border-left: 2px solid var(--accent); background: none; color: #3a322c; }
+    .doc-article table { width: 100%; border-collapse: collapse; font-size: 0.88rem; margin: 1rem 0; }
+    .doc-article th, .doc-article td { border: 1px solid var(--border); padding: 0.5rem 0.6rem; text-align: left; vertical-align: top; }
+    .doc-article thead th { background: #efe4d4; color: #1c1612; }
+    .doc-article tbody tr:nth-child(even) td { background: rgba(255,255,255,0.35); }
+    .doc-article td { color: #3a322c; }
+    .doc-article pre:not(.mermaid) { overflow-x: auto; padding: 0.9rem 1rem; background: #1c1612; color: #f6efe4; border-radius: 0; font-size: 0.8rem; }
+    .doc-article pre code { background: none; color: inherit; padding: 0; }
+    .mermaid { margin: 1rem 0; padding: 0.8rem; background: #faf6ee; border: 1px solid var(--border); overflow-x: auto; }
+    .kw-risk, .doc-article .kw-risk { color: #8f2d2d; font-weight: 750; border-bottom: 1px solid #8f2d2d; background: none; }
+    .kw-cadence, .doc-article .kw-cadence { color: #8a5a12; font-weight: 700; border-bottom: 1px solid #8a5a12; background: none; }
+    .md-missing { color: #8d3b24; }
+    .md-fallback { white-space: pre-wrap; background: #1c1612; color: #f6efe4; padding: 1rem; overflow-x: auto; }
+    .doc-footer { margin-top: 2rem; padding-top: 0.8rem; border-top: 1px solid #1c1612; color: var(--muted); font-size: 0.82rem; }
+    @media (max-width: 720px) {
+      .doc-article table { display: block; overflow-x: auto; }
     }
-    .doc-top a:hover { color: var(--accent-2); text-decoration: underline; }
-    .doc-top span { font-size: 0.78rem; color: var(--muted); font-weight: 500; }
-    .doc-wrap {
-      width: 100%;
-      max-width: none;
-      margin: 0;
-      padding: clamp(1rem, 1.8vw, 1.75rem) clamp(1rem, 4vw, 3.5rem) clamp(2.5rem, 6vw, 5rem);
-    }
-    .doc-article {
-      width: 100%;
-      max-width: none;
-      background: transparent;
-      border: none;
-      border-radius: 0;
-      padding: 0;
-      box-shadow: none;
-    }
-    .doc-article h1 {
-      font-size: clamp(1.55rem, 3.2vw, 2.25rem);
-      margin: 0 0 1rem;
-      letter-spacing: -0.03em;
-      line-height: 1.15;
-      background: linear-gradient(105deg, #fdf4ff 0%, #a5f3fc 42%, #c4b5fd 100%);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-    }
-    .doc-article h2 {
-      font-size: clamp(1.05rem, 1.9vw, 1.35rem);
-      margin: 2.35rem 0 0.85rem;
-      padding: 0.5rem 0 0.6rem 1rem;
-      border-left: 4px solid #a78bfa;
-      border-bottom: 1px solid var(--border);
-      color: #ede9fe;
-    }
-    .doc-article h2:first-of-type { margin-top: 0; }
-    .doc-article h2:nth-of-type(4n+2) {
-      border-left-color: #2dd4bf;
-      color: #ccfbf1;
-    }
-    .doc-article h2:nth-of-type(4n+3) {
-      border-left-color: #fbbf24;
-      color: #fef9c3;
-    }
-    .doc-article h2:nth-of-type(4n+4) {
-      border-left-color: #fb7185;
-      color: #ffe4e6;
-    }
-    .doc-article h3 {
-      font-size: clamp(0.98rem, 1.4vw, 1.08rem);
-      margin: 1.45rem 0 0.55rem;
-      color: #7ee8d8;
-    }
-    .doc-article h4 {
-      font-size: 0.95rem;
-      margin: 1rem 0 0.4rem;
-      color: #c4b5fd;
-    }
-    .doc-article p {
-      margin: 0.65rem 0;
-      color: #dcd7ec;
-      font-size: clamp(0.88rem, 1.2vw, 0.98rem);
-    }
-    .doc-article a { color: #7dd3fc; font-weight: 500; }
-    .doc-article a:hover { color: #f0abfc; }
-    .doc-article hr {
-      border: none;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(167, 139, 250, 0.45), transparent);
-      margin: 2.25rem 0;
-    }
-    .doc-article ul, .doc-article ol {
-      margin: 0.6rem 0 0.6rem 1.25rem;
-      color: #dcd7ec;
-      font-size: clamp(0.88rem, 1.2vw, 0.98rem);
-    }
-    .doc-article li { margin: 0.35rem 0; }
-    .doc-article strong { color: #fff; }
-    .doc-article code {
-      font-size: 0.86em;
-      padding: 0.12rem 0.4rem;
-      border-radius: 6px;
-      background: rgba(30, 27, 55, 0.95);
-      border: 1px solid rgba(94, 234, 212, 0.22);
-      color: #a5f3fc;
-    }
-    .doc-article blockquote {
-      margin: 0.9rem 0;
-      padding: 0.65rem 1rem;
-      border-left: 4px solid #f0abfc;
-      background: rgba(139, 92, 246, 0.1);
-      color: #c4bcd9;
-      font-size: 0.92rem;
-      border-radius: 0 10px 10px 0;
-    }
-    .doc-article table {
-      width: 100%;
-      border-collapse: collapse;
-      font-size: clamp(0.8rem, 1.1vw, 0.9rem);
-      margin: 1.15rem 0;
-    }
-    .doc-article th, .doc-article td {
-      border: 1px solid var(--border);
-      padding: 0.55rem 0.65rem;
-      text-align: left;
-      vertical-align: top;
-    }
-    .doc-article thead th {
-      background: linear-gradient(180deg, rgba(139, 92, 246, 0.38) 0%, rgba(45, 212, 191, 0.16) 100%);
-      color: #faf5ff;
-      font-weight: 650;
-    }
-    .doc-article tbody tr:nth-child(even) td { background: rgba(255, 255, 255, 0.025); }
-    .doc-article td { color: #e8e4f6; }
-    .doc-article pre:not(.mermaid) {
-      overflow-x: auto;
-      padding: 1rem 1.15rem;
-      border-radius: 12px;
-      background: rgba(12, 10, 22, 0.92);
-      border: 1px solid rgba(167, 139, 250, 0.28);
-      font-size: 0.82rem;
-    }
-    .doc-article pre code { background: none; border: none; padding: 0; color: #d8d4e8; }
-    .mermaid {
-      margin: 1.5rem 0;
-      padding: 1.15rem 1.25rem;
-      border-radius: 14px;
-      background: rgba(18, 16, 35, 0.78);
-      border: 1px solid rgba(45, 212, 191, 0.24);
-      overflow-x: auto;
-    }
-    .kw-risk {
-      color: #fecaca;
-      font-weight: 700;
-      background: rgba(248, 113, 113, 0.2);
-      border: 1px solid rgba(248, 113, 113, 0.45);
-      padding: 0.06rem 0.28rem;
-      border-radius: 4px;
-      white-space: nowrap;
-    }
-    .kw-cadence {
-      color: #fef08a;
-      font-weight: 650;
-      background: rgba(250, 204, 21, 0.12);
-      border: 1px solid rgba(250, 204, 21, 0.38);
-      padding: 0.06rem 0.28rem;
-      border-radius: 4px;
-      white-space: nowrap;
-    }
-    .doc-footer {
-      font-size: 0.82rem;
-      color: var(--muted);
-      margin-top: 3rem;
-      padding-top: 1.25rem;
-      border-top: 1px dashed rgba(167, 139, 250, 0.35);
-    }
+
   </style>
 </head>
 <body>
   <header class="doc-top">
-    <a href="/">← Dashboard</a>
+    <a href="/">Quorum</a>
     <span>Generated from docs/ARCHITECTURE.md</span>
   </header>
   <div class="doc-wrap">
@@ -256,7 +114,7 @@ SHELL_TAIL = """
   </div>
   <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
   <script>
-    mermaid.initialize({ startOnLoad: false, theme: "dark", securityLevel: "loose" });
+    mermaid.initialize({ startOnLoad: false, theme: "neutral", securityLevel: "loose" });
     mermaid.run({ querySelector: ".mermaid" });
   </script>
 </body>
